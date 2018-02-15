@@ -1,0 +1,32 @@
+- if you don't understand, say it asap!
+
+- all types: ‎object, array, number, null, undefined
+- truthy falsey (false, null, undefined, 0, NaN, '', "")
+- design patterns, importance of good architecture, DRY
+- recursion - for going through tree structure or factorial?
+- functions, default params
+- comments
+- template literals (string interpolation)
+- event loop => threads
+- Promises VS callbacks VS await (async)
+- beware of old literature! use:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+https://developer.mozilla.org/en-US/docs/Web/JavaScript
+-
+
+
+Practice:
+- Array and the methods it contains
+- switching letters in words
+- capitalizing words in headings
+- Promises - play with sequential and parallel, fulfilled / rejected, chain several "then" with consle log and watch what is being resolved and when
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+function myAsyncFunction(url) {
+return new Promise((resolve, reject) => {
+const xhr = new XMLHttpRequest();
+xhr.open("GET", url);
+xhr.onload = () => resolve(xhr.responseText);
+xhr.onerror = () => reject(xhr.statusText);
+xhr.send();
+});
+}
