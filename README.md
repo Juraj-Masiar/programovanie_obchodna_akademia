@@ -12,7 +12,9 @@
 - 15.02.2018 at 14:15 begins our journey in the room 123 in Obchodná akadémia building
 
 
-## How to begin (video tutorial will come later):
+## How to begin:
+
+**Video-tutorial with slovak speaker is available here: https://youtu.be/l9pQCBMXkKA**
 
 1) install **Intellij Idea Ultimate IDE**:  
  **https://www.jetbrains.com/idea/download/**  
