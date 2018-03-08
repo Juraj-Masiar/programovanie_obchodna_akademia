@@ -1,6 +1,6 @@
 const noop = () => {};
 
-// Falsy values:
+// Falsy values: (you should know all these - `false`, empty string, zero, null, undefined, Not a Number)
 if (false)      noop(); else console.log(`false is false`);
 if ('')         noop(); else console.log(`empty string is false`);
 if ("")         noop(); else console.log(`empty string is false`);
