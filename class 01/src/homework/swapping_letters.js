@@ -15,21 +15,21 @@
 function shuffleWords(inputText) {
   // your code goes here:
 
-    const result = inputText
-        .split(' ')
-        .map(function (word) {      // this is the transformation function
-            // extract first and last letter
-            // use slice funtion to get middle letters
-            // call call shuffle function
-            // return first + shuffle result + last
-        })
-        .join(' ');
-    return result;
+  const result = inputText
+    .split(' ')
+    .map(function (word) {// this is the transformation function
+      // extract first and last letter
+      // use slice function to get middle letters
+      // call call shuffle function with the middle part
+      // return first + shuffle_result + last
+    })
+    .join(' ');
+  return result;
 }
 
 function shuffle(input) {
-    // todo: finish proper shuffle
-    return input
+  // todo: finish proper shuffle
+  return input
 }
 
 const testInput = 'Reading swapped words';

@@ -1,0 +1,9 @@
+Information about course:
+https://github.com/icl7126/programovanie_obchodna_akademia
+https://www.facebook.com/programovanieDK/
+
+Online JavaScript documentation:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+
+or just google "mdn array" if you want to know more about arrays...
+
