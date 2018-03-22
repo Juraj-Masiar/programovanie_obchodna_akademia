@@ -4,7 +4,7 @@
  *    There is only one rule: First and Last letter in every word needs to be correctly placed - all other letters can be shuffled.
  *
  *    Example input:    "Reading swapped words"
- *    Example output:   "Raeding sawpepd wrods"
+ *    Example output:   "Raenidg sawpepd wrdos"
  *
  *    How it works? Read here:
  *    https://www.mrc-cbu.cam.ac.uk/people/matt.davis/cmabridge/
