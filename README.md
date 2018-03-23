@@ -8,6 +8,7 @@
 
 
 ## News:
+- 22.03.2018 at 14:15 will be fifth class
 - 15.03.2018 at 14:15 will be forth class - **HOMEWORK - based on the tutorial below install all tools on your home PC and try to run some scripts (see the [YouTube](https://youtu.be/l9pQCBMXkKA) video)**
 - 08.03.2018 at 14:15 will be third class
 - 01.03.2018 at 14:15 will be the second class, again in the room 123 in Obchodná akadémia building
@@ -37,9 +38,9 @@ https://www.jetbrains.com/idea/nextversion/
 
 5) open installed **Git** console and type:
 
-
+```console
     mkdir git
     cd git
     git clone https://github.com/icl7126/programovanie_obchodna_akademia.git
-    
+```
 After these steps you will have all your files in your PC and you can start developing using **Intellij Idea** by opening the cloned directory.
