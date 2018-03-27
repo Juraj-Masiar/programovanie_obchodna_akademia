@@ -8,8 +8,9 @@
 
 
 ## News:
+- 28.03.2018 at 14:15 - _**WARNING: next class is moved to Wednesday due to school holiday on Thursday**_
 - 22.03.2018 at 14:15 will be fifth class
-- 15.03.2018 at 14:15 will be forth class - **HOMEWORK - based on the tutorial below install all tools on your home PC and try to run some scripts (see the [YouTube](https://youtu.be/l9pQCBMXkKA) video)**
+- 15.03.2018 at 14:15 will be forth class - HOMEWORK - based on the tutorial below install all tools on your home PC and try to run some scripts (see the [YouTube](https://youtu.be/l9pQCBMXkKA) video)
 - 08.03.2018 at 14:15 will be third class
 - 01.03.2018 at 14:15 will be the second class, again in the room 123 in Obchodná akadémia building
 - 15.02.2018 at 14:15 begins our journey in the room 123 in Obchodná akadémia building
