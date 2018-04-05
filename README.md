@@ -8,7 +8,8 @@
 
 
 ## News:
-- 28.03.2018 at 14:15 - _**WARNING: next class is moved to Wednesday due to school holiday on Thursday**_
+- 05.04.2018 at 14:15 - **make sure you watched the video-tutorial below**
+- 28.03.2018 at 14:15 - WARNING: next class is moved to Wednesday due to school holiday on Thursday
 - 22.03.2018 at 14:15 will be fifth class
 - 15.03.2018 at 14:15 will be forth class - HOMEWORK - based on the tutorial below install all tools on your home PC and try to run some scripts (see the [YouTube](https://youtu.be/l9pQCBMXkKA) video)
 - 08.03.2018 at 14:15 will be third class
