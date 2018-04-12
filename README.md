@@ -8,7 +8,8 @@
 
 
 ## News:
-- 12.04.2018 at 14:15 - **make sure you watched the video-tutorial below**
+- 19.04.2018 at 14:15 - **make sure you watched the video-tutorial below**
+- 12.04.2018 at 14:15 - eight class
 - 05.04.2018 at 14:15 - seventh class
 - 28.03.2018 at 14:15 - WARNING: next class is moved to Wednesday due to school holiday on Thursday
 - 22.03.2018 at 14:15 will be fifth class

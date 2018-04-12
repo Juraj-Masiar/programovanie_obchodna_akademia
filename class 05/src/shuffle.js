@@ -4,7 +4,7 @@
 
   Good to know:
   - original array is destroyed (empty) after the algorithm
-  - random position is not guaranteed - you can get same order
+  - random order is not guaranteed - you can get same order
  */
 
 const inputArray = ['a', 'b', 'c', 'd'];
