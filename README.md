@@ -8,9 +8,10 @@
 
 
 ## News:
-- 19.04.2018 at 14:15 - **make sure you watched the video-tutorial below**
-- 12.04.2018 at 14:15 - eight class
-- 05.04.2018 at 14:15 - seventh class
+- 26.04.2018 at 14:15 - **make sure you watched the video-tutorial below**
+- 19.04.2018 at 14:15 - ninth class - finishing our swapping letters experiment (homework from first class)
+- 12.04.2018 at 14:15 - eight class - playing with different version of shuffle 
+- 05.04.2018 at 14:15 - seventh class - playing with shuffle
 - 28.03.2018 at 14:15 - WARNING: next class is moved to Wednesday due to school holiday on Thursday
 - 22.03.2018 at 14:15 will be fifth class
 - 15.03.2018 at 14:15 will be forth class - HOMEWORK - based on the tutorial below install all tools on your home PC and try to run some scripts (see the [YouTube](https://youtu.be/l9pQCBMXkKA) video)
