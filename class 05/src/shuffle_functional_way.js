@@ -9,11 +9,11 @@
 
 const inputArray = ['a', 'b', 'c', 'd'];
 console.log('input is ', inputArray);
-const resultArray = shuffleUsingRandomSelection(inputArray);
+const resultArray = shuffleUsingRandomPairs(inputArray);
 console.log('result is', resultArray);
 
 
-function shuffleUsingRandomSelection(inputArray) {
+function shuffleUsingRandomPairs(inputArray) {
   return inputArray
     .map(item => [item, Math.random()])   // create pairs - item and the random number
     .sort((a, b) => a[1] - b[1])          // sort array by the random number (the second item in pair)

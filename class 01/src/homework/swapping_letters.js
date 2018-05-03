@@ -28,8 +28,16 @@ function shuffleWords(inputText) {
 }
 
 function shuffle(input) {
-  // todo: finish proper shuffle
-  return input
+  const textAsArray = input.split('');
+  const shuffledArray = shuffleUsingRandomPairs(textAsArray);
+  const shuffledWord = shuffledArray.join('');
+  return shuffledWord
+}
+function shuffleUsingRandomPairs(inputArray) {
+  return inputArray
+    .map(item => [item, Math.random()])   // create pairs - item and the random number
+    .sort((a, b) => a[1] - b[1])          // sort array by the random number (the second item in pair)
+    .map(x => x[0])                       // extract the original item from pair
 }
 
 const testInput = 'Reading swapped words';
