@@ -1,0 +1,11 @@
+
+
+.snake_body_part {
+    position: fixed;
+    top: -1000px;
+    left: -1000px;
+}
+
+.snake_head {
+
+}
