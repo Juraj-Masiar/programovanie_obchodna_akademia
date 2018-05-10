@@ -5,7 +5,14 @@
     top: -1000px;
     left: -1000px;
 }
+.snake_body_part svg > path {
+    fill: #00ab00;
+}
 
 .snake_head {
 
 }
+.snake_head svg > path {
+    fill: green;
+}
+

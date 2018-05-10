@@ -12,7 +12,8 @@ const Snake = () => {
   function BodyPart(isHead = false) {
     let _posX = 0, _posY = 0;
     const _id = NumberGenerator();
-    const _node = buildElement('div', {id: _id, class: `snake_body_part ${isHead ? 'snake_head' : ''}`});   // body part is by default invisible (out of visible area), by setting correct position it will become visible
+    const _node = buildBodyNode();   // body part is by default invisible (out of visible area), by setting correct position it will become visible
+    document.body.appendChild(_node);
     return {                                  // BodyPart API
       isHead: () => isHead,
       isBody: () => !isHead,
@@ -27,6 +28,19 @@ const Snake = () => {
       _posY = y;
       _node.style.left = px(x);   // todo: maybe extract graphics part to the separate component?
       _node.style.top = px(y);
+    }
+
+    function buildBodyNode() {
+      return buildElement('div', {
+        id: _id,
+        class: `snake_body_part ${isHead ? 'snake_head' : ''}`
+      }, buildElement('svg', {
+          width: isHead ? 30 : 20,
+          height: isHead ? 30 : 20,
+          viewBox: '0 0 1792 1792',
+          xmlns: 'http://www.w3.org/2000/svg'
+        }, buildElement('path', {d: 'M1664 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z'}))
+      )
     }
   } // BodyPart
 
