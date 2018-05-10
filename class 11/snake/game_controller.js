@@ -1,11 +1,25 @@
 
+const GameController = (() => {
+  window.addEventListener('load', init);   // start game when page is loaded
 
-window.addEventListener('load', startGame);   // start game when page is loaded
+  return {
+    getMapDimensions: getMapDimensions
+  };
 
-async function startGame() {
+  function init() {
+    startGame();
+  }
 
-  const snakeController = SnakeController();
-  await snakeController.startSnake();
+  async function startGame() {
 
-}
+    const snakeController = SnakeController();
+    await snakeController.startSnake();
+
+  }
+
+  function getMapDimensions() {
+    return [window.innerWidth, window.innerHeight];
+  }
+
+})(); // GameController
 

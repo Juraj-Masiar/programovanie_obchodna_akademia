@@ -1,8 +1,8 @@
 
 const Snake = () => {
   const _snakeBody = [BodyPart(true), BodyPart()];
-  let self;
-  return (self = {                            // Snake API
+  let _self;
+  return (_self = {                            // Snake API
     getSnake: () => _snakeBody.slice(),
     getHead: () => _snakeBody.find(x => x.isHead()),
     getTail: () => _snakeBody.filter(x => x.isBody()),
@@ -14,20 +14,31 @@ const Snake = () => {
     const _id = NumberGenerator();
     const _node = buildBodyNode();   // body part is by default invisible (out of visible area), by setting correct position it will become visible
     document.body.appendChild(_node);
-    return {                                  // BodyPart API
+    let _self;
+    return (_self = {                                  // BodyPart API
       isHead: () => isHead,
       isBody: () => !isHead,
       getPosition: () => [_posX, _posY],
       setPosition: setPosition,
       setPositionX: x => setPosition(x, _posY),
-      setPositionY: y => setPosition(_posX, y)
-    };
+      setPositionY: y => setPosition(_posX, y),
+      move: move
+    });
 
     function setPosition(x, y) {
       _posX = x;
       _posY = y;
       _node.style.left = px(x);   // todo: maybe extract graphics part to the separate component?
       _node.style.top = px(y);
+    }
+
+    function move(direction, delta) {
+      switch (direction) {
+        case 'ArrowRight': _self.setPositionX(_posX + delta); break;
+        case 'ArrowLeft': _self.setPositionX(_posX - delta); break;
+        case 'ArrowDown': _self.setPositionY(_posY + delta); break;
+        case 'ArrowUp': _self.setPositionY(_posY - delta); break;
+      }
     }
 
     function buildBodyNode() {

@@ -1,6 +1,6 @@
 
 const InputController = () => {
-  const allowedKeys = ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'];
+  const allowedKeys = ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp'];
   let _direction = 'ArrowRight';
   window.addEventListener('keydown', onKeyDown);
 
