@@ -1,20 +1,9 @@
 
-let direction = 'ArrowRight';
-const allowedKeys = ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'];
+const Snake = () => {
 
-window.addEventListener('keydown', e => {
-  console.log('e', e);
-  if (allowedKeys.includes(e.keyCode)) {
-    direction = e.keyCode
-  }
-});
+  return {
+    getHead: noop
+  };
 
-window.addEventListener('load', run);
 
-async function run() {
-  while (false) {
-    console.log('staring loop');
-
-  }
-}
-
+};
