@@ -17,8 +17,14 @@ const SnakeController = (STEP_DELAY = 1000, MOVE_DELTA = 20) => {
       const direction = _input.getDirection();
       const head = _snake.getHead();
       const tail = _snake.getTail();
+      const snakeBody = _snake.getSnake();
       head.move(direction, MOVE_DELTA);
-      tail.forEach(x => x.move(direction, MOVE_DELTA));
+      for (let i = 1; i < snakeBody.length; i++) {
+        const previousItem = snakeBody[i - 1];
+        const bodyItem = snakeBody[i];
+
+
+      }
 
       await timeoutPromise(STEP_DELAY);
     }
