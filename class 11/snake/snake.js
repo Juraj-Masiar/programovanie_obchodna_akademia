@@ -1,6 +1,6 @@
 
 const Snake = () => {
-  const _snakeBody = [BodyPart(true), BodyPart()];
+  const _snakeBody = [BodyPart(true)];
   let _self;
   return (_self = {                            // Snake API
     getSnake: () => _snakeBody.slice(),
@@ -15,14 +15,15 @@ const Snake = () => {
     const _node = buildBodyNode();   // body part is by default invisible (out of visible area), by setting correct position it will become visible
     document.body.appendChild(_node);
     let _self;
-    return (_self = {                                  // BodyPart API
+    return (_self = {                          // BodyPart API
       isHead: () => isHead,
       isBody: () => !isHead,
       getPosition: () => [_posX, _posY],
       setPosition: setPosition,
       setPositionX: x => setPosition(x, _posY),
       setPositionY: y => setPosition(_posX, y),
-      move: move
+      move: move,
+      setColor: color => _node.style.setProperty('color', color)
     });
 
     function setPosition(x, y) {
@@ -56,13 +57,13 @@ const Snake = () => {
   } // BodyPart
 
   function addBodyPart(position) {
-    if (position < 0 || position + 1 >= _snakeBody.length) throw `Wrong insert position, cannot insert at ${position} if snake length is ${_snakeBody.length}`;
+    if (position < 0 || position >= _snakeBody.length) throw `Wrong insert position, cannot insert at ${position} if snake length is ${_snakeBody.length}`;
     const bodyPart = BodyPart();
     _snakeBody.splice(position + 1, 0, bodyPart);
     return bodyPart;
   }
   function removeBodyPart(position) {
-    if (position < 0 || position + 1 >= _snakeBody.length) throw `Wrong remove position, cannot remove at ${position} if snake length is ${_snakeBody.length}`;
+    if (position < 0 || position >= _snakeBody.length) throw `Wrong remove position, cannot remove at ${position} if snake length is ${_snakeBody.length}`;
     _snakeBody.splice(position + 1, 1);
   }
 

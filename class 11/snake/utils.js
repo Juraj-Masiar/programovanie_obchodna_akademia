@@ -5,6 +5,8 @@ const px = pixels => `${pixels}px`;
 const percent = percent => `${percent}%`;
 const timeoutPromise = delay => new Promise(resolve => setTimeout(resolve, delay));
 
+const randomHexColor = () => '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
+
 const NumberGenerator = (() => {
   let i = 0;
   return () => ++i;
