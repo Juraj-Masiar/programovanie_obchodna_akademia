@@ -8,8 +8,9 @@
 
 
 ## News:
-- 17.05.2018 at 14:15 - eleventh class - Snake game - implementation continues **Make sure to play: [Grasshopper game](https://grasshopper.codes/)**
-- 10.05.2018 at 14:15 - eleventh class - Snake game - implementation
+- 24.05.2018 at 14:15 - thirteenth class - Snake game - implementation continues **Make sure to play: [Grasshopper game](https://grasshopper.codes/)**
+- 17.05.2018 at 14:15 - canceled - no one come :(
+- 10.05.2018 at 14:15 - twelfth class - Snake game - implementation
 - 03.05.2018 at 14:15 - eleventh class - Snake game - design
 - 26.04.2018 at 14:15 - tenth class - this class we will play games that will teach you to code!
 - 19.04.2018 at 14:15 - ninth class - finishing our swapping letters experiment (homework from first class)
