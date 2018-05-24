@@ -26,13 +26,30 @@ const SnakeController = (STEP_DELAY = 1000, MOVE_DELTA = 20) => {
       const head = _snake.getHead();
       const tail = _snake.getTail();
       const snakeBody = _snake.getSnake();
-      head.move(direction, MOVE_DELTA);
+      // const previousPositions = snakeBody
+      //   .map(x => x.getPosition());
+
+      const aaa = [];
+
       for (let i = 1; i < snakeBody.length; i++) {
         const previousItem = snakeBody[i - 1];
         const bodyItem = snakeBody[i];
         const [x, y] = previousItem.getPosition();
+        // const [x, y] = previousPositions[i - 1];
+        // bodyItem.setPosition(x, y);
+        // setTimeout(() => bodyItem.setPosition(x, y), 0);
 
+        aaa.push(() => bodyItem.setPosition(x, y));
       }
+
+
+      head.move(direction, MOVE_DELTA);
+      aaa.reverse().forEach(fn => fn());
+
+
+      const [x, y] = head.getPosition();
+      if (x > 100) head.setPositionX(0);
+      if (x < 0) head.setPositionX(100);
 
       await timeoutPromise(STEP_DELAY);
     }
