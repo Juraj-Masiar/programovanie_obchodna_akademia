@@ -47,8 +47,8 @@ const Snake = () => {
         id: _id,
         class: `snake_body_part ${isHead ? 'snake_head' : ''}`
       }, buildElement('svg', {
-          width: isHead ? 30 : 20,
-          height: isHead ? 30 : 20,
+          width: 20,
+          height: 20,
           viewBox: '0 0 1792 1792',
           xmlns: 'http://www.w3.org/2000/svg'
         }, buildElement('path', {d: 'M1664 896q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z'}))

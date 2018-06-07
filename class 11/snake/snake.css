@@ -4,13 +4,21 @@
     position: fixed;
     top: -1000px;
     left: -1000px;
+
+    -moz-transform: scale(0.7, 0.7);
+    -webkit-transform: scale(0.7, 0.7);
+    -o-transform: scale(0.7, 0.7);
+    transform: scale(0.7, 0.7);
 }
 .snake_body_part svg > path {
     fill: #00ab00;
 }
 
 .snake_head {
-
+    -moz-transform: scale(1.0, 1.0);
+    -webkit-transform: scale(1.0, 1.0);
+    -o-transform: scale(1.0, 1.0);
+    transform: scale(1.0, 1.0);
 }
 .snake_head svg > path {
     fill: green;
