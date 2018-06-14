@@ -24,3 +24,9 @@
     fill: green;
 }
 
+.food {
+    position: fixed;
+}
+.food svg > path {
+    fill: red;
+}

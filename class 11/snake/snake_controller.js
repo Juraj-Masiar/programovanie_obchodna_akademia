@@ -4,6 +4,7 @@ const SnakeController = (STEP_DELAY = 200, MOVE_DELTA = 20) => {
   const _input = InputController();
   const _snake = Snake();
   let _isPaused = false;
+  const _foodList = [];
   init();
 
   return {
@@ -12,10 +13,12 @@ const SnakeController = (STEP_DELAY = 200, MOVE_DELTA = 20) => {
 
   function init() {
     _input.addOnEscHandler(() => _isPaused = !_isPaused);
-    const firstBody =_snake.addBodyPart(0);
-    const secondBody =_snake.addBodyPart(0);
-    const thirdBody =_snake.addBodyPart(0);
-    [firstBody, secondBody, thirdBody].forEach(bodyPart => bodyPart.setColor(randomHexColor()))
+    [
+      _snake.addBodyPart(0),
+      _snake.addBodyPart(0),
+      _snake.addBodyPart(0)
+    ].forEach(bodyPart => bodyPart.setColor(randomHexColor()));
+    _foodList.push(Food(100, 100), Food(40, 40), Food(140, 80));    // todo: make food appear on random but correct positions
   }
 
   async function startSnake() {
@@ -47,10 +50,23 @@ const SnakeController = (STEP_DELAY = 200, MOVE_DELTA = 20) => {
       // get dimension of the map
       const [mapWidth, mapHeight] = GameController.getMapDimensions();
       // prevent snake to get out of the map
-      const [x, y] = head.getPosition();
-      if (x >= mapWidth) head.setPositionX(0);
-      if (x < 0) head.setPositionX(mapWidth);
+      const [headX, headY] = head.getPosition();
+      if (headX >= mapWidth) head.setPositionX(0);
+      if (headX < 0) head.setPositionX(mapWidth);
       // todo: finish "y" axis
+
+
+      const collisionFood = _foodList.find(food => {
+        const [x, y] = food.getPosition();
+        return x === headX && y === headY;
+      });
+      if (collisionFood) {
+        collisionFood.remove();
+        removeFromArray(_foodList, collisionFood);
+        // todo: finish snake growing when eating
+        // todo: make sure to add new food on the map once the old is gone
+
+      }
 
       await timeoutPromise(STEP_DELAY);
     }
