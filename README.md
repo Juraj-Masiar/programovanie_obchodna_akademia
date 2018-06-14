@@ -8,6 +8,7 @@
 
 
 ## News:
+- 21.06.2018 at 13:50 - fifteenth class - implementing new Typing game for education!
 - 14.06.2018 at 13:50 - fourteenth class - Snake game - final touch + starting new Typing game for education!
 - 07.06.2018 at 13:50 - **class canceled! (students are busy with final exams)**
 - 24.05.2018 at 13:50 - thirteenth class - Snake game - implementation continues **Make sure to play: [Grasshopper game](https://grasshopper.codes/)**

@@ -18,7 +18,9 @@ const SnakeController = (STEP_DELAY = 200, MOVE_DELTA = 20) => {
       _snake.addBodyPart(0),
       _snake.addBodyPart(0)
     ].forEach(bodyPart => bodyPart.setColor(randomHexColor()));
-    _foodList.push(Food(100, 100), Food(40, 40), Food(140, 80));    // todo: make food appear on random but correct positions
+
+    // todo: make food appear on random but correct positions
+    _foodList.push(Food(100, 100), Food(40, 40), Food(140, 80));
   }
 
   async function startSnake() {
@@ -63,9 +65,13 @@ const SnakeController = (STEP_DELAY = 200, MOVE_DELTA = 20) => {
       if (collisionFood) {
         collisionFood.remove();
         removeFromArray(_foodList, collisionFood);
-        // todo: finish snake growing when eating
-        // todo: make sure to add new food on the map once the old is gone
-
+        // adding snake body part to the end of the snake
+        _snake.addBodyPart(tail.length);
+        // adding new food to the screen on the random position
+        _foodList.push(Food(
+          getRandomBetween(0, mapWidth / 20) * 20,
+          getRandomBetween(0, mapHeight / 20) * 20
+        ));
       }
 
       await timeoutPromise(STEP_DELAY);
