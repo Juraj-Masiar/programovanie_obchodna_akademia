@@ -57,3 +57,10 @@ function buildElement(name, attrs, childNodesOpt) {
   return node;
 }
 
+function getTextNodes() {
+  const nodes = [], walker = document.createTreeWalker(document, window.NodeFilter.SHOW_TEXT, null, false);
+  let node;
+  while((node = walker.nextNode())) nodes.push(node);
+  return nodes;
+}
+
