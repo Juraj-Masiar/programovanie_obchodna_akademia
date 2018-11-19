@@ -1,7 +1,5 @@
 
 
-
-
 async function moveNodeFromUpDown(node) {
   const timeoutPromise = waitingTime => new Promise(resolve => setTimeout(resolve, waitingTime));
   node.style.position = 'fixed';
@@ -13,4 +11,3 @@ async function moveNodeFromUpDown(node) {
   }
 }
 
-moveNodeFromUpDown({style: {}});
