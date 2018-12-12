@@ -9,12 +9,11 @@
 
   "icons": {
       "48": "48.png",
-      "96": "96.png",
       "128": "128.png"
   },
 
   "background": {
-    "page": "background.html"
+    "page": "background_t.html"
   },
 
   "browser_action": {
@@ -31,7 +30,7 @@
 
   "applications": {
     "gecko": {
-      "id": "juraj.masiar@oa.Typo",
+      "id": "juraj.masiar@gmail.com_Typo",
       "strict_min_version": "60.0"
     }
   }
