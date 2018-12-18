@@ -4,8 +4,8 @@
 #### JavaScript programming course for beginners by [Juraj Mäsiar](https://www.linkedin.com/in/juraj-m%C3%A4siar-a0648b73), author of [FastAddons](https://fastaddons.com/).
 
 
-**Facebook page for this course: https://www.facebook.com/programovanieDK/**
-
+**Facebook page for this course: https://www.facebook.com/programovanieDK/**  
+**Slack link for communication: https://programovaniedk.slack.com/**
 
 ## News:
 - 21.06.2018 at 13:50 - fifteenth class - implementing new Typing game for education!
@@ -29,7 +29,7 @@
 
 ## How to begin:
 
-**Video-tutorial with slovak speaker is available here: https://youtu.be/l9pQCBMXkKA**
+**Video-tutorial with slovak speaker is available here: https://youtu.be/X1jl_gb8fT4**
 
 1) install **Intellij Idea Ultimate IDE**:  
  **https://www.jetbrains.com/idea/download/**  
