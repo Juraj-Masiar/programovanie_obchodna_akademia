@@ -46,7 +46,11 @@ https://www.jetbrains.com/idea/nextversion/
 3) install **Node.js**  
 **https://nodejs.org/en/download/**
 
-4) make sure you have Firefox or Chrome web-browser
+4) install **Python**  
+**https://www.python.org/downloads/**
+
+4) make sure you have Firefox or Chrome web-browser - we will be using **Firefox Developer Edition**  
+**https://www.mozilla.org/en-US/firefox/developer/**
 
 5) open installed **Git** console and type:
 
