@@ -5,6 +5,6 @@ const InputController = (() => {
 
   };
 
-  
+
 })();
 
