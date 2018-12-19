@@ -5,6 +5,7 @@ const px = pixels => `${pixels}px`;
 const percent = percent => `${percent}%`;
 const timeoutPromise = delay => new Promise(resolve => setTimeout(resolve, delay));
 const removeFromArray = (arr, item) => { for(let i = arr.length; i--;) if(arr[i] === item) arr.splice(i, 1) };
+const flatten = arrayOfArrays => Array.prototype.concat.apply([], arrayOfArrays);   // todo: place optimizations
 
 const randomHexColor = () => '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
 

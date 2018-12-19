@@ -16,6 +16,8 @@ browser.runtime.onMessage.addListener((data, sender) => {
 browser.browserAction.onClicked.addListener(async tab => {
   await injectFile('utils.js');
   await injectFile('page_text_extractor.js');
+  await injectFile('node_animator.js');
+  await injectFile('input_controller.js');
   await injectFile('typo.js');
 
 
