@@ -29,7 +29,7 @@ async function RUN_TYPO() {
     const animation = NodeAnimator.fromUpToDown(wordNode, px(window.innerWidth / (i + 2)), px(i * 50), px(window.innerHeight + i * 50), 10000);
     // todo: when animation is done, we can do something...
     animation.finished.then(() => console.log('word animation done', wordNode));
-    
+
   }
 
 
