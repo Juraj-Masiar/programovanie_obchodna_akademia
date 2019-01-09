@@ -15,7 +15,7 @@ const WordsController = (() => {
     const wordsNodes = words
       .map(word => buildElement('span', {
         style: 'background: gray; color: white; display: inline-block; position: absolute;',
-        textContent: word.toLowerCase()
+        textContent: word
       }))
       .slice(0, 10);
 
@@ -29,7 +29,11 @@ const WordsController = (() => {
       // add it to the page body
       document.body.prepend(wordNode);
       // start the animation
-      const animation = NodeAnimator.fromUpToDown(wordNode, px(window.innerWidth / (i + 2)), px(i * 50), px(window.innerHeight + i * 50), animationDuration);
+
+      const startX = px(window.innerWidth / 2);
+      const startY = px(0);
+      const endY = px(window.innerHeight);
+      const animation = NodeAnimator.fromUpToDown(wordNode, startX, startY, endY, animationDuration);
       // add falling word to the list of all falling words
       _fallingWords.push({
         animation: animation,
@@ -40,9 +44,10 @@ const WordsController = (() => {
       // todo: when animation is done, we can do something...
       animation.finished.then(() => {
         console.log('word animation done', wordNode);
+        wordNode.remove();
         removeFromArrayPredicate(_fallingWords, item => item.animation.id === animation.id);
       });
-      // await animation.finished;
+      await animation.finished.catch(() => {});
     }
   }
 
