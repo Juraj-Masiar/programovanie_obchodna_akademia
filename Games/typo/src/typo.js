@@ -22,13 +22,21 @@ async function RUN_TYPO() {
     console.log(userText);
     // todo: study Animation API: https://developer.mozilla.org/en-US/docs/Web/API/Animation
 
-    WordsController.forEachWord(({animation, node, text}, i) => {
+    WordsController.forEachWord(({animation, node, text, highlightNode}, i) => {
       // iterate though all words:
+      if (text.startsWith(userText) && userText.length > 0) {
+        highlightNode.textContent =  userText;
+        setStyle(highlightNode, 'visibility', 'visible');
+      }
+      else {
+        setStyle(highlightNode, 'visibility', 'hidden');
 
+      }
       // todo: replace this block with something that will do the right thing
       if (text === userText) {
         animation.cancel();
         node.remove();
+        highlightNode.remove();
         node.style.background = 'yellow';
         node.style.color = 'black';
         InputController.clear();   // this clears what user wrote

@@ -14,7 +14,7 @@ const WordsController = (() => {
   }) {
     const wordsNodes = words
       .map(word => buildElement('span', {
-        style: styleNode('background: gray; color: white; display: inline-block; position: absolute;'),
+        style: styleNode('background: #FF00FF; color: white; display: inline-block; font-size: 20px; padding: 4px;'),
         textContent: word.toLowerCase()
       }))
       .slice(0, 10);
@@ -32,11 +32,20 @@ const WordsController = (() => {
       const startX = (window.innerWidth / 2);
       const startY = (0);
       const endY = (window.innerHeight);
+      const highlightNode = buildElement('span', {
+        style: styleNode('background: black; visibility: hidden; color: white; display: inline-block; font-size: 20px; padding: 4px;'),
+        textContent: ''
+      });
+      document.body.parentElement.appendChild(highlightNode);
+
+      const animationH = NodeAnimator.fromUpToDown(highlightNode, startX, startY, endY, animationDuration);
       const animation = NodeAnimator.fromUpToDown(wordNode, startX, startY, endY, animationDuration);
       // add falling word to the list of all falling words
       _fallingWords.push({
         animation: animation,
+        animationH: animationH,
         node: wordNode,
+        highlightNode: highlightNode,
         text: wordNode.textContent
       });
 
