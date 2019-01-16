@@ -14,7 +14,13 @@ const WordsController = (() => {
   }) {
     const wordsNodes = words
       .map(word => buildElement('span', {
-        style: styleNode('background: #FF00FF; color: white; display: inline-block; font-size: 20px; padding: 4px;'),
+        style: styleNode(`
+        background: #FF00FF; 
+        color: white; 
+        display: inline-block; 
+        font-size: 20px; 
+        padding: 4px;
+        `),
         textContent: word.toLowerCase()
       }))
       .slice(0, 10);
@@ -33,7 +39,14 @@ const WordsController = (() => {
       const startY = (0);
       const endY = (window.innerHeight);
       const highlightNode = buildElement('span', {
-        style: styleNode('background: black; visibility: hidden; color: white; display: inline-block; font-size: 20px; padding: 4px;'),
+        style: styleNode(`background: black; 
+        visibility: hidden; 
+        color: white; 
+        display: inline-block; 
+        font-size: 20px; 
+        padding: 4px;
+        padding-right: 0;
+        ;`),
         textContent: ''
       });
       document.body.parentElement.appendChild(highlightNode);
@@ -51,6 +64,7 @@ const WordsController = (() => {
 
       // todo: when animation is done, we can do something...
       animation.finished.then(() => {
+        InputController.clear();   // this clears what user wrote
         console.log('word animation done', wordNode);
         wordNode.remove();
         removeFromArrayPredicate(_fallingWords, item => item.animation.id === animation.id);
