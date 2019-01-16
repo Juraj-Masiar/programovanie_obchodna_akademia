@@ -41,7 +41,7 @@ const NodeAnimator = (() => {
       while (true) {
         const currentTime = getTime();
         const timeElapsed = currentTime - startTime;
-        if (currentTime > endTime) return;
+        if (currentTime > endTime) break;
         if (_isCanceled) return _reject();
         setStyle(node, 'top', px(startY + timeElapsed * pathLength / duration));
         await requestAnimationFramePromise();

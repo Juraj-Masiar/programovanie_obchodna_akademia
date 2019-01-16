@@ -26,12 +26,14 @@ async function RUN_TYPO() {
       // iterate though all words:
 
       // todo: replace this block with something that will do the right thing
-      if (text === 'wikipedia') {
+      if (text === userText) {
         animation.cancel();
+        node.remove();
         node.style.background = 'yellow';
         node.style.color = 'black';
-        // InputController.clear();   // this clears what user wrote
+        InputController.clear();   // this clears what user wrote
       }
+      if (!text.startsWith(userText)) console.error('CHYBA');
 
     })
 

@@ -29,7 +29,10 @@ const WordsController = (() => {
       // add it to the page body
       document.body.parentElement.appendChild(wordNode);
       // start the animation
-      const animation = NodeAnimator.fromUpToDown(wordNode, (window.innerWidth / (i + 2)), (i * 50), (window.innerHeight + i * 50), animationDuration);
+      const startX = (window.innerWidth / 2);
+      const startY = (0);
+      const endY = (window.innerHeight);
+      const animation = NodeAnimator.fromUpToDown(wordNode, startX, startY, endY, animationDuration);
       // add falling word to the list of all falling words
       _fallingWords.push({
         animation: animation,
@@ -40,9 +43,10 @@ const WordsController = (() => {
       // todo: when animation is done, we can do something...
       animation.finished.then(() => {
         console.log('word animation done', wordNode);
+        wordNode.remove();
         removeFromArrayPredicate(_fallingWords, item => item.animation.id === animation.id);
       });
-      // await animation.finished;
+      await animation.finished.catch(() => {});
     }
   }
 
