@@ -8,7 +8,7 @@ browser.runtime.onMessage.addListener((data, sender) => {
 
 
 async function RUN_TYPO() {
-  const duration = 50000;
+  const duration = 9000;
 
   console.log('hello from typo.js script');
   document.body.style.background = 'green';

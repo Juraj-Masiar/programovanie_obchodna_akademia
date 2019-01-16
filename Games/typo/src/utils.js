@@ -4,9 +4,16 @@ const byId = id => document.getElementById(id);
 const px = pixels => `${pixels}px`;
 const percent = percent => `${percent}%`;
 const timeoutPromise = delay => new Promise(resolve => setTimeout(resolve, delay));
+const getTime = () => Date.now();
 const removeFromArray = (arr, item) => { for(let i = arr.length; i--;) if(arr[i] === item) arr.splice(i, 1) };
 const removeFromArrayPredicate = (arr, fn) => { for(let i = arr.length; i--;) if(fn(arr[i])) arr.splice(i, 1) };
 const flatten = arrayOfArrays => Array.prototype.concat.apply([], arrayOfArrays);   // todo: place optimizations
+const promiseFactory = () => { const result = []; result.splice(0, 0, new Promise((resolve, reject) => {result.push(resolve, reject)})); return result };   // returns [promise, resolve, reject]
+
+const setStyle = (node, style, value) => node.style.setProperty(style, value, 'important');
+const styleNode = (styles = '') => (`all: initial; z-index: 2147483647; font-family: Verdana, Helvetica, sans-serif; font-size: 12px; ${styles}`).split(';').map(s => s + '!important').join(';');
+
+const requestAnimationFramePromise = () => new Promise(resolve => window.requestAnimationFrame(resolve));
 
 const randomHexColor = () => '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
 

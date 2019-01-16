@@ -14,7 +14,7 @@ const WordsController = (() => {
   }) {
     const wordsNodes = words
       .map(word => buildElement('span', {
-        style: 'background: gray; color: white; display: inline-block; position: absolute;',
+        style: styleNode('background: gray; color: white; display: inline-block; position: absolute;'),
         textContent: word.toLowerCase()
       }))
       .slice(0, 10);
@@ -27,9 +27,9 @@ const WordsController = (() => {
       // extract node
       const wordNode = wordsNodes[i];
       // add it to the page body
-      document.body.prepend(wordNode);
+      document.body.parentElement.appendChild(wordNode);
       // start the animation
-      const animation = NodeAnimator.fromUpToDown(wordNode, px(window.innerWidth / (i + 2)), px(i * 50), px(window.innerHeight + i * 50), animationDuration);
+      const animation = NodeAnimator.fromUpToDown(wordNode, (window.innerWidth / (i + 2)), (i * 50), (window.innerHeight + i * 50), animationDuration);
       // add falling word to the list of all falling words
       _fallingWords.push({
         animation: animation,

@@ -7,19 +7,50 @@ https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_We
 const NodeAnimator = (() => {
 
   return {
-    fromUpToDown
+    fromUpToDown: fromUpToDownJavaScriptVersion
   };
 
   function fromUpToDown(node, startX, startY, endY, duration) {
-    node.style.left = `${startX}`;
+    node.style.left = `${px(startX)}`;
     return node.animate([
-      {transform: `translateY(${startY})`},
-      {transform: `translateY(${endY})`}
+      {transform: `translateY(${px(startY)})`},
+      {transform: `translateY(${px(endY)})`}
     ], {
       duration: duration,
       fill: 'forwards',
     });
   }
+
+  function fromUpToDownJavaScriptVersion(node, startX, startY, endY, duration) {
+    const [_promise, _resolve, _reject] = promiseFactory();
+    let _isCanceled = false;
+    startAnimation();
+    return {
+      id: `${NumberGenerator()}`,
+      finished: _promise,
+      cancel: () => _isCanceled = true
+    };
+
+    async function startAnimation() {
+      setStyle(node, 'position', 'fixed');
+      setStyle(node, 'left', px(startX));
+      const pathLength = endY - startY;
+      const startTime = getTime();
+      const endTime = startTime + duration;
+      await timeoutPromise(0);
+      while (true) {
+        const currentTime = getTime();
+        const timeElapsed = currentTime - startTime;
+        if (currentTime > endTime) return;
+        if (_isCanceled) return _reject();
+        setStyle(node, 'top', px(startY + timeElapsed * pathLength / duration));
+        await requestAnimationFramePromise();
+      }
+      _resolve();
+    }
+
+  }
+
 })();
 
 
