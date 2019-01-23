@@ -4,7 +4,8 @@ const PageTextExtractor = (() => {
   return {
     getTextBlocks: getTextBlocks,
     getSentences: getSentences,
-    getWords: getWords
+    getWords: getWords,
+    getSimpleWords: getSimpleWords,
   };
 
   function getTextBlocks() {
@@ -20,12 +21,19 @@ const PageTextExtractor = (() => {
     return sentences.filter(x => x);
   }
 
-  function getWords() {
+  function getWords(shuffle = false) {
     const sentences = getSentences();
     const sentencesWithWords = sentences.map(sentence => sentence.split(' '));
     const words = flatten(sentencesWithWords).map(word => word.trim());
-    return words
+    const filteredWords = words
       .filter(word => word)
-      .filter(word => word.match(new RegExp('[A-zÀ-ÿ]')))   // keep only words with alphanumeric characters: https://stackoverflow.com/a/26900132/1376947
+      .filter(word => word.match(new RegExp('[A-zÀ-ÿ]')));   // keep only words with alphanumeric characters: https://stackoverflow.com/a/26900132/1376947
+    const shuffledWords = shuffleArray(filteredWords);
+    return shuffledWords;
+  }
+  
+  function getSimpleWords() {
+    return getWords()
+      .filter(word => word.match(new RegExp('^[A-z]+$')))
   }
 })();

@@ -13,7 +13,7 @@ async function RUN_TYPO() {
   console.log('hello from typo.js script');
   document.body.style.background = 'lightgray';
 
-  const words = PageTextExtractor.getWords();
+  const words = PageTextExtractor.getSimpleWords();
   WordsController.startGame(words, {animationDuration: duration});
 
 
@@ -40,8 +40,14 @@ async function RUN_TYPO() {
         node.style.background = 'yellow';
         node.style.color = 'black';
         InputController.clear();   // this clears what user wrote
+        StatisticsController.okWord();
       }
-      if (!text.startsWith(userText)) console.error('CHYBA');
+      if (!text.startsWith(userText)) {
+        console.error('CHYBA');
+        StatisticsController.wrongKey();
+      } else {
+        StatisticsController.okKey();
+      }
 
     })
 
