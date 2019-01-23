@@ -24,6 +24,7 @@ browser.browserAction.onClicked.addListener(async tab => {
   await injectFile('node_animator.js');
   await injectFile('input_controller.js');
   await injectFile('words_controller.js');
+  await injectFile('statistics_controller.js');
   await injectFile('typo.js');
 
 

@@ -12,8 +12,11 @@ const promiseFactory = () => { const result = []; result.splice(0, 0, new Promis
 
 const setStyle = (node, style, value) => node.style.setProperty(style, value, 'important');
 const styleNode = (styles = '') => (`all: initial; z-index: 2147483647; font-family: Verdana, Helvetica, sans-serif; font-size: 12px; ${styles}`).split(';').map(s => s + '!important').join(';');
+const styleBlock = (styles = '') => (`all: initial; z-index: 2147483647; font-family: Verdana, Helvetica, sans-serif; font-size: 12px; display: block; ${styles}`).split(';').map(s => s + '!important').join(';');
 
 const requestAnimationFramePromise = () => new Promise(resolve => window.requestAnimationFrame(resolve));
+
+const shuffleArray = array => array.map(x => [Math.random(), x]).sort(([a], [b]) => a - b).map(([_, x]) => x);
 
 const randomHexColor = () => '#' + (Math.random() * 0xFFFFFF << 0).toString(16);
 

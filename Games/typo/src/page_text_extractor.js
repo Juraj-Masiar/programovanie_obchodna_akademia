@@ -2,9 +2,9 @@
 
 const PageTextExtractor = (() => {
   return {
-    getTextBlocks,
-    getSentences,
-    getWords
+    getTextBlocks: getTextBlocks,
+    getSentences: getSentences,
+    getWords: getWords
   };
 
   function getTextBlocks() {
@@ -24,6 +24,8 @@ const PageTextExtractor = (() => {
     const sentences = getSentences();
     const sentencesWithWords = sentences.map(sentence => sentence.split(' '));
     const words = flatten(sentencesWithWords).map(word => word.trim());
-    return words.filter(x => x);
+    return words
+      .filter(word => word)
+      .filter(word => word.match(new RegExp('[A-zÀ-ÿ]')))   // keep only words with alphanumeric characters: https://stackoverflow.com/a/26900132/1376947
   }
 })();
