@@ -14,6 +14,7 @@ async function RUN_TYPO() {
   document.body.style.background = 'lightgray';
 
   const words = PageTextExtractor.getSimpleWords();
+  ListController.drawWords(words);
   WordsController.addWordCreatedEventListener(onWordStart);
   WordsController.startGame(words, {animationDuration: duration});
 
@@ -64,13 +65,17 @@ async function RUN_TYPO() {
 function onWordStart({animation, node, text, highlightNode}) {
   console.log('new word is now falling:', text);
   InputController.clear();   // this clears what user wrote
+  animation.finished.then(() => {
+    StatisticsController.wrongWord();
+  });
 
 }
 
 function onEscHandler(event) {
   console.log('ESC pressed');
-  const {animation, node, text, highlightNode} = WordsController.getCurrentWord();
-
+  const {animation, animationH, node, text, highlightNode} = WordsController.getCurrentWord();
+  animation.pause();
+  animationH.pause();
 }
 
 

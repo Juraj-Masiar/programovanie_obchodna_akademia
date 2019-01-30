@@ -39,13 +39,15 @@ const NodeAnimator = (() => {
       const pathLength = endY - startY;
       const startTime = getTime();
       const endTime = startTime + duration;
+      let pausedTime = 0;
       await timeoutPromise(0);
       while (true) {
         if (_isPaused) {
           await timeoutPromise(100);
+          pausedTime += 100;
           continue;
         }
-        const currentTime = getTime();
+        const currentTime = getTime() - pausedTime;
         const timeElapsed = currentTime - startTime;
         if (currentTime > endTime) break;
         if (_isCanceled) return _reject();

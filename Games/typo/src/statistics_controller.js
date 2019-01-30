@@ -16,9 +16,9 @@ const StatisticsController = (() => {
     reset: reset,
     draw: draw,
     okKey: () => { ++_okKey; draw(); },
-    wrongKey: () => { --_wrongKey; draw(); },
+    wrongKey: () => { ++_wrongKey; draw(); },
     okWord: () => { ++_okWord; draw(); },
-    wrongWord: () => { --_wrongWord; draw(); },
+    wrongWord: () => { ++_wrongWord; draw(); },
     getStatistics: getStatistics,
   };
 

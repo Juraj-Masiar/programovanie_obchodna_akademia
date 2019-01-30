@@ -8,7 +8,9 @@ const ListController = (() => {
   };
 
   function init() {
-    return document.body.appendChild(buildElement('list-words', {style: styleBlock(`
+
+    const box = buildElement('list-words', {
+      style: styleBlock(`
       position: fixed; 
       top: 90px; 
       right: 0; 
@@ -19,7 +21,10 @@ const ListController = (() => {
       border: 1px solid black;
       display: flex;
       flex-direction: column;
-    `)}));
+    `)
+    });
+    document.body.appendChild(box);
+    return box;
   }
 
   function drawNodes(nodes) {
