@@ -2,11 +2,13 @@
 
 const WordsController = (() => {
   const _fallingWords = [];   // contains objects with "animation", "node" and "text" properties
-
+  const _wordListeners = [];
 
   return {
     forEachWord: forEachWord,
-    startGame: startGame
+    getCurrentWord: getCurrentWord,
+    addWordCreatedEventListener: fn => _wordListeners.push(fn),
+    startGame: startGame,
   };
 
   async function startGame(words, {
@@ -54,21 +56,23 @@ const WordsController = (() => {
       const animationH = NodeAnimator.fromUpToDown(highlightNode, startX, startY, endY, animationDuration);
       const animation = NodeAnimator.fromUpToDown(wordNode, startX, startY, endY, animationDuration);
       // add falling word to the list of all falling words
-      _fallingWords.push({
+      const wordItem = {
         animation: animation,
         animationH: animationH,
         node: wordNode,
         highlightNode: highlightNode,
         text: wordNode.textContent
-      });
+      };
+      _fallingWords.push(wordItem);
+      _wordListeners.forEach(fn => fn(wordItem));
 
       // todo: when animation is done, we can do something...
-      animation.finished.then(() => {
-        InputController.clear();   // this clears what user wrote
+      animation.finished.catch(() => {}).then(() => {
         console.log('word animation done', wordNode);
         wordNode.remove();
         removeFromArrayPredicate(_fallingWords, item => item.animation.id === animation.id);
       });
+      // wait for animation to finish (or be canceled)
       await animation.finished.catch(() => {});
     }
   }
@@ -79,6 +83,10 @@ const WordsController = (() => {
     // })
 
     _fallingWords.forEach(fn);
+  }
+
+  function getCurrentWord() {
+    return _fallingWords[_fallingWords.length - 1];
   }
 
 })();

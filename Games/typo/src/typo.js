@@ -14,16 +14,17 @@ async function RUN_TYPO() {
   document.body.style.background = 'lightgray';
 
   const words = PageTextExtractor.getSimpleWords();
+  WordsController.addWordCreatedEventListener(onWordStart);
   WordsController.startGame(words, {animationDuration: duration});
 
+  InputController.addOnEscHandler(onEscHandler);
 
   InputController.addListener((userText, constroller) => {
     // this code is executed when user types anything
     console.log(userText);
-    // todo: study Animation API: https://developer.mozilla.org/en-US/docs/Web/API/Animation
 
     WordsController.forEachWord(({animation, node, text, highlightNode}, i) => {
-      // iterate though all words:
+      // iterate though all falling words:
       if (text.startsWith(userText) && userText.length > 0) {
         highlightNode.textContent =  userText;
         setStyle(highlightNode, 'visibility', 'visible');
@@ -59,6 +60,18 @@ async function RUN_TYPO() {
 
 }
 
+// executed for each falling word
+function onWordStart({animation, node, text, highlightNode}) {
+  console.log('new word is now falling:', text);
+  InputController.clear();   // this clears what user wrote
+
+}
+
+function onEscHandler(event) {
+  console.log('ESC pressed');
+  const {animation, node, text, highlightNode} = WordsController.getCurrentWord();
+
+}
 
 
 RUN_TYPO();

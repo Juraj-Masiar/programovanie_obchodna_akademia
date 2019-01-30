@@ -24,10 +24,12 @@ const NodeAnimator = (() => {
   function fromUpToDownJavaScriptVersion(node, startX, startY, endY, duration) {
     const [_promise, _resolve, _reject] = promiseFactory();
     let _isCanceled = false;
+    let _isPaused = false;
     startAnimation();
-    return {
+    return {    // this is an animation object (API for our animation)
       id: `${NumberGenerator()}`,
       finished: _promise,
+      pause: () => _isPaused = !_isPaused,
       cancel: () => _isCanceled = true
     };
 
@@ -39,6 +41,10 @@ const NodeAnimator = (() => {
       const endTime = startTime + duration;
       await timeoutPromise(0);
       while (true) {
+        if (_isPaused) {
+          await timeoutPromise(100);
+          continue;
+        }
         const currentTime = getTime();
         const timeElapsed = currentTime - startTime;
         if (currentTime > endTime) break;

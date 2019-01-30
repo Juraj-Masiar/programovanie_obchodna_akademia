@@ -16,15 +16,17 @@ browser.runtime.onMessage.addListener((data, sender) => {
 
 // when user clicks the toolbar icon, execute "content script" in current page
 browser.browserAction.onClicked.addListener(async tab => {
-  if (await browser.tabs.sendMessage(tab.id, {type: 'ping'}).catch(() => false))   // if the script is already injected, we reload the page
+  if (await browser.tabs.sendMessage(tab.id, {type: 'ping'}).catch(() => false)) {   // if the script is already injected, we reload the page
     await browser.tabs.reload();
-  await timeoutPromise(100);
+    await timeoutPromise(500);
+  }
   await injectFile('utils.js');
   await injectFile('page_text_extractor.js');
   await injectFile('node_animator.js');
   await injectFile('input_controller.js');
   await injectFile('words_controller.js');
   await injectFile('statistics_controller.js');
+  await injectFile('list_controller.js');
   await injectFile('typo.js');
 
 
