@@ -74,8 +74,13 @@ function onWordStart({animation, node, text, highlightNode}) {
 function onEscHandler(event) {
   console.log('ESC pressed');
   const {animation, animationH, node, text, highlightNode} = WordsController.getCurrentWord();
-  animation.pause();
-  animationH.pause();
+  if (animation.isPaused()) {
+    animation.unpause();
+    animationH.unpause();
+  } else {
+    animation.pause();
+    animationH.pause();
+  }
 }
 
 

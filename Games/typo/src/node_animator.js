@@ -29,7 +29,9 @@ const NodeAnimator = (() => {
     return {    // this is an animation object (API for our animation)
       id: `${NumberGenerator()}`,
       finished: _promise,
-      pause: () => _isPaused = !_isPaused,
+      isPaused: () => _isPaused,
+      pause: () => _isPaused = true,
+      unpause: () => _isPaused = false,
       cancel: () => _isCanceled = true
     };
 

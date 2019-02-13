@@ -11,8 +11,8 @@ const flatten = arrayOfArrays => Array.prototype.concat.apply([], arrayOfArrays)
 const promiseFactory = () => { const result = []; result.splice(0, 0, new Promise((resolve, reject) => {result.push(resolve, reject)})); return result };   // returns [promise, resolve, reject]
 
 const setStyle = (node, style, value) => node.style.setProperty(style, value, 'important');
-const styleNode = (styles = '') => (`all: initial; z-index: 2147483647; font-family: Verdana, Helvetica, sans-serif; font-size: 12px; ${styles}`).split(';').map(s => s + '!important').join(';');
-const styleBlock = (styles = '') => (`all: initial; z-index: 2147483647; font-family: Verdana, Helvetica, sans-serif; font-size: 12px; display: block; ${styles}`).split(';').map(s => s + '!important').join(';');
+const styleNode = (styles = '') => (`all: initial; z-index: 2147483647; font-family: Verdana, Helvetica, sans-serif; font-size: 12px; ${styles}`).split(';').filter(x => x.trim()).map(s => s + '!important').join(';');
+const styleBlock = (styles = '') => (`all: initial; z-index: 2147483647; font-family: Verdana, Helvetica, sans-serif; font-size: 12px; display: block; ${styles}`).split(';').filter(x => x.trim()).map(s => s + '!important').join(';');
 
 const requestAnimationFramePromise = () => new Promise(resolve => window.requestAnimationFrame(resolve));
 

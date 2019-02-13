@@ -5,6 +5,7 @@ const ListController = (() => {
   return {
     drawWords: drawWords,
     drawNodes: drawNodes,
+    highlightWord: highlightWord,
   };
 
   function init() {
@@ -34,6 +35,12 @@ const ListController = (() => {
   function drawWords(words) {
     const nodes = words.map(w => buildElement('word', {style: styleBlock(``), textContent: w}));
     drawNodes(nodes)
+  }
+
+  function highlightWord(word, color) {
+    // todo: this is very weak implementation because it always finds only the first occurrence of the word PLUS it ignores the case
+    const wordNode = [..._container.childNodes].find(node => node.textContent.toLowerCase() === word.toLowerCase());
+    setStyle(wordNode, 'background', color);
   }
 
 })();

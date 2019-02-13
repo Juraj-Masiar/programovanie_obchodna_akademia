@@ -23,7 +23,7 @@ const StatisticsController = (() => {
   };
 
   function init() {
-    const _node = document.body.appendChild(buildElement('div', {style: styleBlock(`
+    const _node = buildElement('div', {style: styleBlock(`
   position: fixed; 
   top: 0; 
   right: 0; 
@@ -46,7 +46,8 @@ const StatisticsController = (() => {
       _wrongWordNode,
       _wrongKeyNode,
     ]),
-    ]));
+    ]);
+    document.body.appendChild(_node);
   }
 
   function reset() {
