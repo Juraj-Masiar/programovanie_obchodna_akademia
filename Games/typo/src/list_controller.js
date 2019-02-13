@@ -14,6 +14,8 @@ const ListController = (() => {
       style: styleBlock(`
       position: fixed; 
       top: 90px; 
+      height: calc(100% - 90px - 50px);
+      overflow-y: auto;
       right: 0; 
       margin: 10px; 
       padding: 10px;
@@ -22,6 +24,7 @@ const ListController = (() => {
       border: 1px solid black;
       display: flex;
       flex-direction: column;
+      box-shadow: 4px 5px 4px 0px #181818;
     `)
     });
     document.body.appendChild(box);

@@ -16,7 +16,17 @@ async function RUN_TYPO() {
   const words = PageTextExtractor.getSimpleWords();
   ListController.drawWords(words);
   WordsController.addWordCreatedEventListener(onWordStart);
-  WordsController.startGame(words, {animationDuration: duration});
+
+  const buttonNode = buildElement('button', {
+    style: 'position: fixed; top: 100px; left: 100px;', textContent: 'Start game',
+    handlers: {onclick: event => {
+      WordsController.startGame(words, {animationDuration: duration});
+      event.target.remove();
+
+      }},
+  });
+
+  document.body.appendChild(buttonNode);
 
   InputController.addOnEscHandler(onEscHandler);
 
@@ -43,6 +53,7 @@ async function RUN_TYPO() {
         node.style.color = 'black';
         InputController.clear();   // this clears what user wrote
         StatisticsController.okWord();
+        ListController.highlightWord(text, 'lightgreen');
       }
       if (!text.startsWith(userText)) {
         console.error('CHYBA');
@@ -67,6 +78,7 @@ function onWordStart({animation, node, text, highlightNode}) {
   InputController.clear();   // this clears what user wrote
   animation.finished.then(() => {
     StatisticsController.wrongWord();
+    ListController.highlightWord(text, 'red');
   });
 
 }
@@ -77,9 +89,11 @@ function onEscHandler(event) {
   if (animation.isPaused()) {
     animation.unpause();
     animationH.unpause();
+    InputController.enableTyping();
   } else {
     animation.pause();
     animationH.pause();
+    InputController.disableTyping();
   }
 }
 

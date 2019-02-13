@@ -24,8 +24,7 @@ const WordsController = (() => {
         padding: 4px;
         `),
         textContent: word.toLowerCase()
-      }))
-      .slice(0, 10);
+      }));
 
     console.log('wn', wordsNodes, words);
 
