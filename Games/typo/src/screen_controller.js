@@ -1,6 +1,7 @@
 
 
 const ScreenController = (() => {
+  const duration = 9000;
   let _container;
 
   return {
@@ -41,7 +42,11 @@ const ScreenController = (() => {
 
   function startGame() {
     console.log('starting game');
+    const words = PageTextExtractor.getSimpleWords();
+    ListController.drawWords(words);
+    WordsController.startGame(words, {animationDuration: duration});   // todo: move all this logic to screen controller
 
+    _container.remove();
   }
 
   function getButtonStyle(customStyle = '', size = 2) {

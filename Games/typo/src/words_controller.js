@@ -3,17 +3,17 @@
 const WordsController = (() => {
   const _fallingWords = [];   // contains objects with "animation", "node" and "text" properties
   const _wordListeners = [];
+  let _animationDuration = 0;
 
   return {
     forEachWord: forEachWord,
     getCurrentWord: getCurrentWord,
     addWordCreatedEventListener: fn => _wordListeners.push(fn),
     startGame: startGame,
+    setAnimationDuration: animationTime => _animationDuration = animationTime,
   };
 
-  async function startGame(words, {
-    animationDuration
-  }) {
+  async function startGame(words, {animationDuration}) {
     const wordsNodes = words
       .map(word => buildElement('span', {
         style: styleNode(`
@@ -52,8 +52,8 @@ const WordsController = (() => {
       });
       document.body.parentElement.appendChild(highlightNode);
 
-      const animationH = NodeAnimator.fromUpToDown(highlightNode, startX, startY, endY, animationDuration);
-      const animation = NodeAnimator.fromUpToDown(wordNode, startX, startY, endY, animationDuration);
+      const animationH = NodeAnimator.fromUpToDown(highlightNode, startX, startY, endY, _animationDuration || animationDuration);
+      const animation = NodeAnimator.fromUpToDown(wordNode, startX, startY, endY, _animationDuration || animationDuration);
       // add falling word to the list of all falling words
       const wordItem = {
         animation: animation,

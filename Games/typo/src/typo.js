@@ -8,19 +8,15 @@ browser.runtime.onMessage.addListener((data, sender) => {
 
 
 async function RUN_TYPO() {
-  const duration = 9000;
-
   console.log('hello from typo.js script');
   document.body.style.background = 'lightgray';
-
-  const words = PageTextExtractor.getSimpleWords();
-  ListController.drawWords(words);
   WordsController.addWordCreatedEventListener(onWordStart);
 
-  // WordsController.startGame(words, {animationDuration: duration});   // todo: move all this logic to screen controller
+
+
+
   ScreenController.initialize();
 
-  document.body.appendChild(buttonNode);
 
   InputController.addOnEscHandler(onEscHandler);
 
@@ -74,6 +70,9 @@ function onWordStart({animation, node, text, highlightNode}) {
     StatisticsController.wrongWord();
     ListController.highlightWord(text, 'red');
   });
+  console.log(StatisticsController.getStatistics());
+  const {okWord, wrongWord} = StatisticsController.getStatistics();
+  WordsController.setAnimationDuration(Math.max(3000, 9000 - 500 * (wrongWord + okWord)));
 
 }
 
