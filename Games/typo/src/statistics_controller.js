@@ -7,9 +7,9 @@ const StatisticsController = (() => {
   let _wrongKey = 0;
 
   const _okKeyNode = buildElement('div', {style: styleBlock()});
+  const _wrongKeyNode = buildElement('div', {style: styleBlock()});
   const _okWordNode = buildElement('div', {style: styleBlock()});
   const _wrongWordNode = buildElement('div', {style: styleBlock()});
-  const _wrongKeyNode = buildElement('div', {style: styleBlock()});
 
   init();
   return {
@@ -37,14 +37,14 @@ const StatisticsController = (() => {
     buildElement('statistics-names', {style: styleBlock()}, [
       buildElement('label', {style: styleBlock('margin-right: 5px;'), textContent: 'OK keys:'}),
       buildElement('label', {style: styleBlock('margin-right: 5px;'), textContent: 'OK words:'}),
-      buildElement('label', {style: styleBlock('margin-right: 5px;'), textContent: 'Wrong words:'}),
       buildElement('label', {style: styleBlock('margin-right: 5px;'), textContent: 'Wrong keys:'}),
+      buildElement('label', {style: styleBlock('margin-right: 5px;'), textContent: 'Wrong words:'}),
     ]),
     buildElement('statistics-values', {style: styleBlock('margin-left: auto;')}, [
       _okKeyNode,
       _okWordNode,
-      _wrongWordNode,
       _wrongKeyNode,
+      _wrongWordNode,
     ]),
     ]);
     document.body.appendChild(_node);
@@ -53,8 +53,8 @@ const StatisticsController = (() => {
   function reset() {
     _okKey = 0;
     _okWord = 0;
-    _wrongWord = 0;
     _wrongKey = 0;
+    _wrongWord = 0;
     draw();
   }
 
@@ -62,8 +62,8 @@ const StatisticsController = (() => {
     return {
       okKey: _okKey,
       okWord: _okWord,
-      wrongWord: _wrongWord,
       wrongKey: _wrongKey,
+      wrongWord: _wrongWord,
     }
   }
 
@@ -71,8 +71,8 @@ const StatisticsController = (() => {
   function draw() {
     _okKeyNode.textContent = `${_okKey}`;
     _okWordNode.textContent = `${_okWord}`;
-    _wrongWordNode.textContent = `${_wrongWord}`;
     _wrongKeyNode.textContent = `${_wrongKey}`;
+    _wrongWordNode.textContent = `${_wrongWord}`;
   }
 
 })();

@@ -71,6 +71,16 @@ function buildElement(name, attrs, childNodesOpt) {
   }
   return node;
 }
+function buildHtml(construct) {
+  const [a, b, array] = construct;
+  if (typeof a !== 'string')
+    return construct.map(item => item && buildHtml(item));
+  return buildElement(a, b, array ? buildHtml(array) : null);
+}
+
+function buildCheckbox(value, attributes = {}) {
+  return buildElement('input', {type: 'checkbox', ...attributes, ...(value ? {checked: true} : {})})
+}
 
 function getTextNodes() {
   const nodes = [], walker = document.createTreeWalker(document.body, window.NodeFilter.SHOW_TEXT, null, false);

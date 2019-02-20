@@ -17,14 +17,8 @@ async function RUN_TYPO() {
   ListController.drawWords(words);
   WordsController.addWordCreatedEventListener(onWordStart);
 
-  const buttonNode = buildElement('button', {
-    style: 'position: fixed; top: 100px; left: 100px;', textContent: 'Start game',
-    handlers: {onclick: event => {
-      WordsController.startGame(words, {animationDuration: duration});
-      event.target.remove();
-
-      }},
-  });
+  // WordsController.startGame(words, {animationDuration: duration});   // todo: move all this logic to screen controller
+  ScreenController.initialize();
 
   document.body.appendChild(buttonNode);
 
