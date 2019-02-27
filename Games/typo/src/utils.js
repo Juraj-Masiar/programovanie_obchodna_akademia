@@ -78,9 +78,6 @@ function buildHtml(construct) {
   return buildElement(a, b, array ? buildHtml(array) : null);
 }
 
-function buildCheckbox(value, attributes = {}) {
-  return buildElement('input', {type: 'checkbox', ...attributes, ...(value ? {checked: true} : {})})
-}
 
 function getTextNodes() {
   const nodes = [], walker = document.createTreeWalker(document.body, window.NodeFilter.SHOW_TEXT, null, false);

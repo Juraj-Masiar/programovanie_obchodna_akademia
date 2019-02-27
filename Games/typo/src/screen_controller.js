@@ -32,7 +32,8 @@ const ScreenController = (() => {
       ['button', {style: getButtonStyle(), textContent: 'Start game', handlers: {onclick: startGame}}],
       ['options', {style: styleBlock('width: 100%')}, [
         ['h2', {style: styleBlock('font-size: 20px; margin: 10px 0;'), textContent: 'Options:'}],
-
+        createTextCheckbox('lower_case', 'Lower case only', false),
+        createTextCheckbox('no_diacritics', 'Without diacritics', false),
       ]]
     ]
     ]);
@@ -65,8 +66,20 @@ const ScreenController = (() => {
       `;
   }
 
-  function createCheckbox(value) {
-    buildCheckbox(value, {style: styleNode(`width: 14px; height: 14px; margin: 0 10px 0 0; appearance: checkbox; -moz-appearance: checkbox; -webkit-appearance: checkbox;`)})
+  function createTextCheckbox(id, text, value) {
+    return ['div', {style: styleBlock(`display: flex; align-items: center;`)}, [
+      createCheckbox(value, {id: id}),
+      ['label', {style: styleNode(`cursor: default;`), for: id, textContent: text}],
+    ]]
+  }
+
+  function createCheckbox(value, attributes = {}, customStyle = '') {
+    return ['input', {
+      type: 'checkbox',
+      ...attributes,
+      ...(value ? {checked: true} : {}),
+      style: styleNode(`width: 14px; height: 14px; margin: 0 10px 0 0; appearance: checkbox; -moz-appearance: checkbox; -webkit-appearance: checkbox;${customStyle}`)
+    }]
   }
 
 })();
