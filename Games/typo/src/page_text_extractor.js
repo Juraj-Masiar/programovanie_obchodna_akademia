@@ -28,8 +28,7 @@ const PageTextExtractor = (() => {
     const filteredWords = words
       .filter(word => word)
       .filter(word => word.match(new RegExp('[A-zÀ-ÿ]')));   // keep only words with alphanumeric characters: https://stackoverflow.com/a/26900132/1376947
-    const shuffledWords = shuffleArray(filteredWords);
-    return shuffledWords;
+    return shuffle ? shuffleArray(filteredWords) : filteredWords;
   }
   
   function getSimpleWords() {

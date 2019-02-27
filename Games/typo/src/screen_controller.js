@@ -34,6 +34,7 @@ const ScreenController = (() => {
         ['h2', {style: styleBlock('font-size: 20px; margin: 10px 0;'), textContent: 'Options:'}],
         createTextCheckbox('lower_case', 'Lower case only', false),
         createTextCheckbox('no_diacritics', 'Without diacritics', false),
+        createTextCheckbox('shuffle', 'Shuffle words', true),
       ]]
     ]
     ]);
@@ -43,7 +44,26 @@ const ScreenController = (() => {
 
   function startGame() {
     console.log('starting game');
-    const words = PageTextExtractor.getSimpleWords();
+    // PageTextExtractor.getWords();
+    const filterDiacritics = array => array.filter(word => word.match(new RegExp('^[A-z]+$')));
+    const makeLowerCase = array => array.map(w => w.toLowerCase());
+    const makeRandom = array => shuffleArray(array);
+
+    // const checkboxNode = byId('shuffle');
+    // const isChecked = checkboxNode.checked;
+    // const words = PageTextExtractor.getWords(isChecked);
+
+    const originalWords = PageTextExtractor.getWords();
+
+    const noChangedFn = array => array;
+    const modificationsFunctions = [
+      true ? filterDiacritics : noChangedFn,
+      true ? makeLowerCase : noChangedFn,
+      true ? makeRandom : noChangedFn,
+    ];
+
+    const words = modificationsFunctions.reduce((acc, fn) => fn(acc), originalWords);
+
     ListController.drawWords(words);
     WordsController.startGame(words, {animationDuration: duration});   // todo: move all this logic to screen controller
 
