@@ -5,8 +5,27 @@
 
 // todo: implement your solution here:
 
-function moneySplit() {
+const supportedCoins = [500,200,100,50,20,10,5,2,1];
 
+function getMaxCoin(moneyValue) {
+  for (const x of supportedCoins) {
+    const modulo = moneyValue % x;
+    if (modulo !== moneyValue) {
+      return [x, modulo];
+    }
+  }
+}
+
+function moneySplit(money) {
+  const result = [];
+  let rest;
+
+  do {
+    const [maxCoin, restOfTheMoney] = getMaxCoin(money);
+    rest = restOfTheMoney;
+    result.push(maxCoin);
+  } while (rest > 0);
+  return result;
 }
 
 
