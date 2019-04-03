@@ -3,8 +3,6 @@
 // Example: moneySplit(34) would return [20, 10, 2, 2]
 
 
-// todo: implement your solution here:
-
 const supportedCoins = [500,200,100,50,20,10,5,2,1];
 
 function getMaxCoin(moneyValue) {
@@ -18,18 +16,15 @@ function getMaxCoin(moneyValue) {
 
 function moneySplit(money) {
   const result = [];
-  let rest;
-
+  let rest = money;
   do {
-    const [maxCoin, restOfTheMoney] = getMaxCoin(money);
+    const [maxCoin, restOfTheMoney] = getMaxCoin(rest);
+    // console.log(maxCoin, restOfTheMoney);
     rest = restOfTheMoney;
     result.push(maxCoin);
   } while (rest > 0);
   return result;
 }
-
-
-
 
 // automatic tests:
 
