@@ -5,11 +5,12 @@
 
 const supportedCoins = [500,200,100,50,20,10,5,2,1];
 
-function getMaxCoin(moneyValue) {
-  for (const x of supportedCoins) {
-    const modulo = moneyValue % x;
-    if (modulo !== moneyValue) {
-      return [x, modulo];
+function getMaxCoins(moneyValue) {
+  for (const coin of supportedCoins) {
+    const remainingMoney = moneyValue % coin;
+    if (remainingMoney !== moneyValue) {
+      const howManyCoins = Math.floor(moneyValue / coin);    // round value of how many coins we need to use
+      return [coin, howManyCoins, remainingMoney];
     }
   }
 }
@@ -18,10 +19,12 @@ function moneySplit(money) {
   const result = [];
   let rest = money;
   do {
-    const [maxCoin, restOfTheMoney] = getMaxCoin(rest);
+    const [maxCoin, howManyCoins, restOfTheMoney] = getMaxCoins(rest);
     // console.log(maxCoin, restOfTheMoney);
     rest = restOfTheMoney;
-    result.push(maxCoin);
+    for (let i = 0; i < howManyCoins; i++) {    // use loop to insert the coin required times
+      result.push(maxCoin);
+    }
   } while (rest > 0);
   return result;
 }
