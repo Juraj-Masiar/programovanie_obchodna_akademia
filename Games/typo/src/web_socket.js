@@ -1,8 +1,8 @@
 
 
 
-// const WS_URL = 'ws://pi.fastaddons.com:50001/ws/global';
-const WS_URL = 'ws://localhost:50001/ws/global';
+const WS_URL = 'ws://pi.fastaddons.com:50001/ws/global';
+// const WS_URL = 'ws://localhost:50001/ws/global';
 const CLIENT_UUID = getUUID();
 
 let _connection = {readyState: 3, close: noop, send: noop};   // init with dummy
@@ -32,6 +32,11 @@ async function send(type, data) {
 async function onMessage(e) {
   const data = JSON.parse(e.data);
   console.log('WS: message received', data);
+
+  const tabs = await browser.tabs.query({});
+  tabs.forEach(tab => browser.tabs.sendMessage(tab.id, {type: 'websocket', data: data}));
+
+  // browser.runtime.sendMessage({type: 'websocket', data: data})
 }
 
 async function connect() {

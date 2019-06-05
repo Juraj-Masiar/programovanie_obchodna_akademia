@@ -8,13 +8,13 @@ const MultiPlayerController = (() => {
 
   function init() {
 
-    const box = buildElement('list-words', {
+    const box = buildElement('players', {
       style: styleBlock(`
       position: fixed; 
       top: 90px; 
       height: calc(100% - 90px - 50px);
       overflow-y: auto;
-      right: 0; 
+      left: 0; 
       margin: 10px; 
       padding: 10px;
       font-size: 20px; 

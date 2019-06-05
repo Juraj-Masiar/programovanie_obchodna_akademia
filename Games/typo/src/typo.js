@@ -1,11 +1,11 @@
 
 
 browser.runtime.onMessage.addListener((data, sender) => {
+  console.log('received message', data);
   switch (data.type) {
     case 'ping': return Promise.resolve('pong');
     case 'websocket':
-      const users = [];
-      console.log('received WS', data);   // todo: finish this
+      const users = data.data.data;
       MultiPlayerController.update(users);
   }
 });
