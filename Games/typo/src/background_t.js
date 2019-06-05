@@ -1,3 +1,4 @@
+import {WS} from "./web_socket.js";
 
 async function RUN_APP() {
   // todo: remove in production:
@@ -5,14 +6,18 @@ async function RUN_APP() {
   const tabs = await browser.tabs.query({});
   const wikiTab = tabs.find(t => t.url.includes('wikipedia.org'));
   if (!wikiTab) await browser.tabs.create({url: 'https://www.wikipedia.org/'});
+
+  await WS.init();
 }
 
 
 browser.runtime.onMessage.addListener((data, sender) => {
+  WS.send('score', data);
   switch (data.type) {
 
   }
 });
+
 
 // when user clicks the toolbar icon, execute "content script" in current page
 browser.browserAction.onClicked.addListener(async tab => {

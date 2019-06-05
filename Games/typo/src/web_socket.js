@@ -12,8 +12,8 @@ export const WS = {
 Object.freeze(WS);
 
 // init phase:
-function init() {
-  connect();
+async function init() {
+  await connect();
 }
 
 function send(type, data) {
