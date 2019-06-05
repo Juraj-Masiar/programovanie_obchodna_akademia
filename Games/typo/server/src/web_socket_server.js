@@ -48,7 +48,7 @@ wsServer.on('request', request => {
     if (message.type === 'utf8') {
       // process WebSocket message
       const {utf8Data: clientData} = message;
-      const {type, user_name, data, uuid, version} = clientData;
+      const {type, user_name, data, uuid, version} = JSON.parse(clientData);
       console.log('message:', clientData);
 
       connectedUsers.set(uuid, {
