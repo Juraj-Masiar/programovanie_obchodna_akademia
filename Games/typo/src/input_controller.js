@@ -12,8 +12,8 @@ const InputController = (() => {
   border: 1px solid black;
   `)});
   const _fakeNode = buildElement('input', {style: styleNode('opacity: 0; position: fixed; top: 0; left: 0;')});
-  let _nodeToFocus = _node;
-  setInterval(() => _nodeToFocus.focus(), 10);    // automatic focusing of typing node
+  let _nodeToFocus = _node, _stealingFocus = false;
+  setInterval(() => {if (_stealingFocus) _nodeToFocus.focus() }, 10);    // automatic focusing of typing node
   _node.oninput = inputChangeHandler;
   // _node.onkeydown = onKeyDown;
   window.addEventListener('keydown', onKeyDown);
@@ -23,6 +23,8 @@ const InputController = (() => {
   let _self;
   return (_self = {
     clear: () => _node.value = '',
+    stealFocus: () => _stealingFocus = true,
+    returnFocus: () => _stealingFocus = false,
     addListener: fn => _listeners.push(fn),
     addOnEscHandler: fn => _escListeners.push(fn),
     disableTyping: disableTyping,

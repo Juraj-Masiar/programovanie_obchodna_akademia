@@ -86,3 +86,20 @@ function getTextNodes() {
   return nodes;
 }
 
+function substring(input, strStart, strEnd, useFullLengthInCaseEndNotFound) {
+  let x = 0, z = 0, y = input.length;
+  if (strStart) x = (z = input.indexOf(strStart)) + strStart.length;
+  if (strEnd) y = input.indexOf(strEnd, x);
+  if (y < 0 && useFullLengthInCaseEndNotFound) y = input.length;
+  return y < 0 || z < 0 ? '' : input.substring(x, y);
+}
+
+const getUUID = () => {
+  const uuid = substring(browser.extension.getURL(''), '://', '/', true);
+  if (true) return uuid;
+  else {
+    const x = uuid.split('').map(c => (c.charCodeAt(0) % 16).toString(16)).join('');
+    return `${x.slice(0, 8)}-${x.slice(8, 12)}-${x.slice(12, 16)}-${x.slice(16, 20)}-${x.slice(20, 32)}`
+  }
+};
+

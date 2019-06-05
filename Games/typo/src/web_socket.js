@@ -1,7 +1,9 @@
 
 
 
-const WS_URL = 'ws://pi.fastaddons.com:50001/ws/global';
+// const WS_URL = 'ws://pi.fastaddons.com:50001/ws/global';
+const WS_URL = 'ws://localhost:50001/ws/global';
+const CLIENT_UUID = getUUID();
 
 let _connection = {readyState: 3, close: noop, send: noop};   // init with dummy
 
@@ -16,11 +18,14 @@ async function init() {
   await connect();
 }
 
-function send(type, data) {
+async function send(type, data) {
+  const {user_name} = await browser.storage.local.get('user_name') || 'anonymous';
   _connection.send(JSON.stringify({
     type: type,
+    user_name: user_name,
     data: data,
-    version: getTime()
+    uuid: CLIENT_UUID,
+    version: getTime(),
   }));
 }
 
@@ -37,6 +42,6 @@ async function connect() {
 }
 function onOpen(e) {
   console.log('WS: connected', e);
-  send('uuid');
+  send('hello', `hello from client`);
 }
 

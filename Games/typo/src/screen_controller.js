@@ -10,7 +10,9 @@ const ScreenController = (() => {
     // showEnd: showEnd,
   };
 
-  function initialize() {
+  async function initialize() {
+    const {user_name: userName = ''} = await browser.storage.local.get('user_name');
+
     _container = buildHtml(['welcome-screen', {
       style: styleBlock(`
       position: fixed; 
@@ -30,6 +32,10 @@ const ScreenController = (() => {
     }, [
       ['h1', {style: styleBlock('font-size: 42px; margin: 10px 0;'), textContent: 'Welcome to Typo!'}],
       ['button', {style: getButtonStyle(), textContent: 'Start game', handlers: {onclick: startGame}}],
+      ['user_info', {style: styleBlock('width: 100%')}, [
+        ['h2', {style: styleBlock('font-size: 20px; margin: 10px 0;'), textContent: 'User:'}],
+        ['input', {id: 'user_name', style: styleBlock('font-size: 20px; margin: 10px 0; background: white;'), value: userName, placeholder: 'enter your name', handlers: {oninput: onUserNameChange}}],
+      ]],
       ['options', {style: styleBlock('width: 100%')}, [
         ['h2', {style: styleBlock('font-size: 20px; margin: 10px 0;'), textContent: 'Options:'}],
         createTextCheckbox('lower_case', 'Lower case only', false),
@@ -43,6 +49,7 @@ const ScreenController = (() => {
 
 
   function startGame() {
+    InputController.stealFocus();
     console.log('starting game');
     // PageTextExtractor.getWords();
     const filterDiacritics = array => array.filter(word => word.match(new RegExp('^[A-z]+$')));
@@ -68,6 +75,12 @@ const ScreenController = (() => {
     WordsController.startGame(words, {animationDuration: duration});   // todo: move all this logic to screen controller
 
     _container.remove();
+  }
+
+  function onUserNameChange(e) {
+    const name = e.target.value;
+    browser.storage.local.set({user_name: name});
+    browser.runtime.sendMessage({type: 'user_name', name});
   }
 
   function getButtonStyle(customStyle = '', size = 2) {
