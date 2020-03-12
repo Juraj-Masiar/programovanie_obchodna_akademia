@@ -37,3 +37,11 @@ result += '\n';
 
 
 console.log(result);
+
+
+const timeoutPromise = delay => new Promise(resolve => resolve());
+
+(async function infiniteRecursiveLoop() {
+  await timeoutPromise();
+  infiniteRecursiveLoop();
+})();
